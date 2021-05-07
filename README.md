@@ -18,13 +18,14 @@ Incremental DOM supports IE9 and above.
 HTML is expressed in Incremental DOM using the `elementOpen`, `elementClose`, `elementVoid` and `text` methods. Consider the following example:
 
 ```javascript
-var IncrementalDOM = require('incremental-dom'),
-    elementOpen = IncrementalDOM.elementOpen,
-    elementClose = IncrementalDOM.elementClose,
-    elementVoid = IncrementalDOM.elementVoid,
-    text = IncrementalDOM.text;
+import {
+  elementVoid,
+  elementOpen,
+  elementClose,
+  text
+} from "https://deno.land/x/incremental-dom/mod.ts";
 
-function render(data) {
+function render (data) {
   elementVoid('input', '', [ 'type', 'text' ]);
   elementOpen('div', '', null);
     if (data.someCondition) {
@@ -36,22 +37,23 @@ function render(data) {
 
 To render or update an existing DOM node, the patch function is used:
 
-
 ```javascript
-var patch = require('incremental-dom').patch;
+import {
+  patch
+} from "https://deno.land/x/incremental-dom/mod.ts";
 
-var data = {
-  text: 'Hello World!',
+const data = {
+  text: 'Hello deno!',
   someCondition: true
 };
 
-patch(myElement, function() {
+patch(document.body, function() {
   render(data);
 });
 
 data.text = 'Hello World!';
 
-patch(myElement, function() {
+patch(document.body, function() {
   render(data);
 });
 ```
@@ -64,7 +66,7 @@ patch(myElement, function() {
 
 - [Introducing Incremental Dom](https://medium.com/google-developers/introducing-incremental-dom-e98f79ce2c5f)
 - [Docs and demos](http://google.github.io/incremental-dom/)
-
+<!---
 ## Getting Incremental DOM
 
 ### Via CDN
@@ -113,3 +115,4 @@ To build on change:
 ```sh
 ./node_modules/.bin/ibazel ...
 ```
+-->

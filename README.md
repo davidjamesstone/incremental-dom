@@ -1,5 +1,3 @@
-[![CircleCI](https://circleci.com/gh/google/incremental-dom.svg?style=svg)](https://circleci.com/gh/google/incremental-dom)
-
 # Incremental DOM
 
 ## Overview

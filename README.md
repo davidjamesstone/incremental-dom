@@ -21,7 +21,7 @@ import {
   elementOpen,
   elementClose,
   text
-} from "https://deno.land/x/incremental-dom/mod.ts";
+} from "https://deno.land/x/idom/mod.ts";
 
 function render (data) {
   elementVoid('input', '', [ 'type', 'text' ]);
@@ -38,7 +38,7 @@ To render or update an existing DOM node, the patch function is used:
 ```javascript
 import {
   patch
-} from "https://deno.land/x/incremental-dom/mod.ts";
+} from "https://deno.land/x/idom/mod.ts";
 
 const data = {
   text: 'Hello deno!',

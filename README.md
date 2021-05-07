@@ -66,6 +66,45 @@ patch(document.body, function() {
 
 - [Introducing Incremental Dom](https://medium.com/google-developers/introducing-incremental-dom-e98f79ce2c5f)
 - [Docs and demos](http://google.github.io/incremental-dom/)
+
+### Building
+
+Use deno bundle to build for the browser.
+
+E.g.
+
+`deno bundle -c tsconfig.json src/app.ts dist/app.bundle.js`
+
+In your `tsconfig.json`, make sure you include:
+
+```json
+{
+  "compilerOptions": {
+    "lib": ["es2015", "dom"]
+  }
+}
+```
+
+Alternatively, use `Deno.emit()` to bundle.
+
+```javascript
+const { diagnostics, files, stats } = await Deno.emit("app.ts", {
+  bundle: "esm",
+  compilerOptions: {
+    lib: ["es2015", "dom"],
+  }
+});
+
+console.log(diagnostics, files, stats);
+```
+
+Once you have a bundle created, just import it in your html:
+
+```html
+<script type="module" src="dist/app.bundle.js">
+</script>
+```
+
 <!---
 ## Getting Incremental DOM
 
